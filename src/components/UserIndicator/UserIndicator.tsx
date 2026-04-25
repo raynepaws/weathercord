@@ -3,7 +3,7 @@ import Box from "../Box/Box";
 import BoxButton from "../BoxButton/BoxButton";
 import { Vibrant } from "node-vibrant/node";
 
-const ProfileBox = async (props: Record<string, any> & {
+const UserIndicator = async (props: Record<string, any> & {
   avatar: string,
   canEdit: boolean,
   displayName: string,
@@ -31,4 +31,4 @@ const ProfileBox = async (props: Record<string, any> & {
   );
 };
 
-export default ProfileBox;
+export default UserIndicator;
