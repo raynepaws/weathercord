@@ -13,9 +13,6 @@ interface POSTBody {
 };
 
 const generateUID = (sequential: number) => `${Math.floor(sequential).toString(16)}w${Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString(16).padStart(14, "0")}`;
-for (let i = 0; i < 17; i++) {
-  console.log(generateUID(Math.floor(i)));
-}
 
 export const POST = async (req: Request) => {
   const router = useRouter();
