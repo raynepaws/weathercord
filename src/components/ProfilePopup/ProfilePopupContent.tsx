@@ -20,7 +20,7 @@ const ProfilePopupContent = (props: Record<string, any> & PublicAccount & {
           backgroundPosition: "center"
         }} />
       }
-      <div className="p-1 pt-3 flex flex-col gap-1" style={{
+      <div className="p-1 pt-5 flex flex-col gap-1" style={{
         backgroundImage: `linear-gradient(180deg, transparent, var(--background) 7rem)`
       }}>
         <div className="flex gap-1">
