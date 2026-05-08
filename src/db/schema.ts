@@ -32,7 +32,7 @@ export type AuthorizedAccountFromAPI = Required<Omit<Account, "password">>;
 export const accountsTable = sqliteTable("accounts", {
   accent1: text(),
   accent2: text(),
-  admin: int(),
+  admin: int({ mode: "boolean" }),
   bio: text(),
   displayName: text(),
   email: text(),
