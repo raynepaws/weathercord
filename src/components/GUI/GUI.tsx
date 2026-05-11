@@ -26,7 +26,7 @@ const GUI = () => {
   return (
     <>
       <div className="contents" inert={modal !== null}>
-        <UserIndicator className="w-20" avatar={"/avatar.png"} splash={"https://cdn.discordapp.com/banners/1336737164691505246/a_2a0d51971770ef6a62683d0f6dfefdc4.webp?size=1024"} canEdit {...account} setModal={setModal} />
+        <UserIndicator className="w-20" avatar={"/avatar.png"} splash={"/banner.png"} canEdit {...account} setModal={setModal} />
         <Prompt className="absolute bottom-1 left-22" style={{
           width: "calc(100vw - 23rem)"
         }} />
