@@ -6,3 +6,23 @@
 .container {
   transition: height 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
 }
+
+@keyframes bounce {
+  0% {
+    translate: 0 0rem;
+    animation-timing-function: ease-out;
+  }
+
+  30% {
+    translate: 0 0.4rem;
+    animation-timing-function: ease-in-out;
+  }
+
+  100% {
+    translate: 0 0rem;
+  }
+}
+
+div:has(> div > .container):not(:has(> .open)) {
+  animation: bounce 0.25s 0.3s;
+}
