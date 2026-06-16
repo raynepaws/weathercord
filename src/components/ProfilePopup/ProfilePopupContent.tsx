@@ -3,7 +3,7 @@
 import Badge from "./Badge";
 import { contributors } from "@/lib/contributors";
 import convert from "color-convert";
-import { Cake, Globe, Heart, Shield, Star } from "lucide-react";
+import { Cake, Globe, Heart, Shield, Star, CodeXml } from "lucide-react";
 import { ConnectionType, type PublicAccount } from "@/db/schema";
 import UsernameIDSwitcher from "./UsernameIDSwitcher";
 
@@ -52,13 +52,16 @@ const ProfilePopupContent = (props: Record<string, any> & PublicAccount & {
         }
         <div>
           {props.id === "0w1bcb00925be5d2" &&
-            <Badge color="#ff879f" icon={<Star />} value="Founder" />
+            <Badge color="#ff879f" icon={<Star />} value="Founder" description="The creator of Weathercord"/>
+          }
+          {["0w1bcb00925be5d2", "1w053d3942035cb9", "0w049c240cf19df5"].includes(props.id) &&
+            <Badge color="#fdff87" icon={<CodeXml />} value="Maintainer" description="Regular contributor to Weathercord" startOpen="true"/>
           }
           {props.admin &&
-            <Badge color="#6bc1ff" icon={<Shield />} value="Administrator" />
+            <Badge color="#6bc1ff" icon={<Shield />} value="Administrator"/>
           }
           {contributors.some((contributor) => contributor.id === props.id) &&
-            <Badge color="#ff87cf" icon={<Heart />} value="Source Code Contributor" />
+            <Badge color="#ff87cf" icon={<Heart />} value="Source Code Contributor" description="Contributed at least once to Weathercord" />
           }
           <Badge color="#ffc2fc" icon={<Cake />} value={`Joined ${new Date(props.joined).toLocaleDateString()}`} />
         </div>

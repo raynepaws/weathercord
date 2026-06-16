@@ -37,7 +37,7 @@ const GUI = () => {
       <div className="contents" inert={modal !== null}>
         <UserIndicator className="w-20" avatar={`/u/${account.username}/a`} splash={"/banner.png"} canEdit {...account} setModal={setModal} />
         <Prompt className="absolute bottom-1 left-22" style={{
-          width: "calc(100vw - 23rem)"
+          width: "calc(100vw - 23rem)",
         }} />
       </div>
 

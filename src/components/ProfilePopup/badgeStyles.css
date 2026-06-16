@@ -5,7 +5,13 @@ sub:not(:hover) {
 sub .hover:has(> .lucide) {
   animation: smoosh 0.7s;
 }
-
+div.badge {
+  height: (clicked ? 3ch : 6ch);
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+  transition-duration: 0.5s;
+}
 @keyframes smoosh {
   0% {
     transform: scaleX(1) scaleY(1);

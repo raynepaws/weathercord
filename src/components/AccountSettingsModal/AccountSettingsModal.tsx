@@ -14,7 +14,7 @@ import TabList, { Tab } from "../TabList/TabList";
 export enum ModalTab {
   Profile = 0,
   Connections = 1,
-  About = 2
+  About = 2,
 };
 
 export const modalTabURLNames = [
