@@ -35,6 +35,10 @@ const GUI = () => {
   return (
     <>
       <div className="contents" inert={modal !== null}>
+        <div className="p-0.5 absolute flex items-center justify-center">
+          <img className="w-1.5" src="/Weathercord.svg" alt="logo" />
+          <div style={{fontFamily: account.nameFont ?? "sans-serif", padding: "0 0 0 0.5ch" }}>Weathercord</div>
+        </div>
         <UserIndicator className="w-20" avatar={`/u/${account.username}/a`} splash={"/banner.png"} canEdit {...account} setModal={setModal} />
         <Prompt className="absolute bottom-1 left-22" style={{
           width: "calc(100vw - 23rem)",
