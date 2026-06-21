@@ -28,9 +28,11 @@ const AboutTab = () => {
                       })}
                     </div>
                   )}
-                  {member.quote && (
-                    <p className="text-(--sub) italic"><Quote className="scale-90" /> {member.quote}</p>
-                  )}
+                  {member.quote &&
+                    Array.isArray(member.quote) ? (<p className="text-(--sub) italic"><Quote className="scale-90" /> {member.quote[Math.floor(Math.random() * member.quote.length)]}</p>): (
+                      <p className="text-(--sub) italic"><Quote className="scale-90" /> {member.quote}</p>
+                    )
+                  }
                 </div>
               </Box>
             </a>

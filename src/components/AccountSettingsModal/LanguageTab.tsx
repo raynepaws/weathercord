@@ -23,6 +23,18 @@ const languages: Language[] = [
   {
     name: "toki pona",
     code: "tok"
+  },
+  {
+    name: "Shakespearean English (Great Britain) [INCOMPLETE]",
+    code: "shakespeare"
+  },
+  {
+    name: "None",
+    code: "no-language"
+  },
+  {
+    name: ":3",
+    code: "colonthree"
   }
 ];
 

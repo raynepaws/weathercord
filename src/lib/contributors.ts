@@ -62,6 +62,15 @@ const people = {
       id: "155268413"
     },
     quote: "wood fired pizza? how's pizza gonna get a job now"
+  },
+  kat: {
+    name: "Kat",
+    roles: [ContributorRole.Translator],
+    github: {
+      username: "thekathere",
+      id: "100965627"
+    },
+    quote: ["Hi i'm kat", "Celeste: Ferrous Well (1854)", ":boom:"]
   }
 };
 
@@ -70,7 +79,8 @@ export const team = Object.freeze<Contributor[]>([
   people.tally,
   people.dde,
   people.vuie,
-  people.noodles
+  people.noodles,
+  people.kat
 ]);
 
 export const contributors = Object.freeze<Contributor[]>([
