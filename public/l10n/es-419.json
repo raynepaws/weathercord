@@ -35,7 +35,6 @@
   "settings.tab.profile.show-language": "Mostrar idioma en perfil",
   "settings.tab.profile.upload-limit": "Tamaño máximo de carga de {{limit}} MB.",
   "settings.tab.profile.username": "Nombre de usuario",
-  "settings.tab.profile.username": "Nombre de usuario",
   "sign-up.header": "Unirse a {{APP_NAME}}",
   "sign-up.password-1": "Contraseña",
   "sign-up.password-2": "Repite Contraseña",
