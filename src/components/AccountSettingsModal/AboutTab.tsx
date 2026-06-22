@@ -1,8 +1,7 @@
-import { APP_NAME } from "@/lib/constants";
 import Box from "../Box/Box";
 import { contributors, team } from "@/lib/contributors";
 import DefaultMessage from "../DefaultMessage/DefaultMessage";
-import { Hammer, Heart, Quote } from "lucide-react";
+import { FileText, Hammer, Heart, Quote } from "lucide-react";
 
 const AboutTab = () => {
   return (
@@ -62,6 +61,8 @@ const AboutTab = () => {
           );
         })}
       </div>
+      <h2><FileText /> License</h2>
+      <p>Weathercord uses the GNU Affero General Public License v3.0. Read the full text <a className="link" href="https://github.com/raynepaws/weathercord/blob/master/LICENSE">here</a>.</p>
     </>
   );
 };
