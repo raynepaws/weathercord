@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import { APP_NAME } from "@/lib/constants";
 import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata } from "next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Weathercord",
-  description: "Weathercord web app",
+  title: APP_NAME,
+  description: "A highly customizable and personal instant messaging app",
 };
 
 export default function RootLayout({
