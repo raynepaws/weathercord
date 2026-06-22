@@ -26,8 +26,11 @@ const DefaultMessage = (props: {
 };
 
 export const defaultMessage = (id: l10nValue, values?: Record<string, string>) => {
+  const localizedStore = useSyncExternalStore(l10nStore.subscribe, l10nStore.getSnapshot); // update all DefaultMessages when language changes
+
   let data = localize(id);
-  data = data.replaceAll("{{APP_NAME}}", values?.APP_NAME ?? APP_NAME);
+  data = data.replaceAll("{{APP_NAME}}", values?.APP_NAME ?? localizedStore?.APP_NAME ?? APP_NAME);
+
   for (const key in values) {
     data = data.replaceAll(`{{${key}}}`, values[key]);
   }

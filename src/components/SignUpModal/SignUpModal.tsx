@@ -4,6 +4,9 @@ import { APP_NAME } from "@/lib/constants";
 import DefaultMessage, { defaultMessage } from "../DefaultMessage/DefaultMessage";
 import Modal from "../Modal/Modal";
 import { useState } from "react";
+import AboutTab from "../AccountSettingsModal/AboutTab";
+import LanguageTab from "../AccountSettingsModal/LanguageTab";
+import { Globe } from "lucide-react";
 
 const pictures = 10;
 
@@ -34,6 +37,10 @@ const Pictures = () => (
 );
 
 const SignUpModal = () => {
+  let [aboutOpen, setAboutOpen] = useState(false);
+  let [langOpen, setLangOpen] = useState(false);
+  let [lang, setLang] = useState("en-us");
+
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
   let [password2, setPassword2] = useState("");
@@ -42,50 +49,86 @@ const SignUpModal = () => {
 
   return (
     <>
-      <Modal>
+      <Modal className={"p-0! grid grid-rows-1 grid-flow-col relative ".concat(aboutOpen || langOpen ? "w-70" : "w-30")} style={{
+        transition: "0.5s width"
+      }}>
         <Pictures />
-        <img className="w-12 m-auto" src="/Weathercord.svg" alt={APP_NAME} />
-        <h1 className="text-center"><DefaultMessage id="sign-up.header" /></h1>
-        <form onSubmit={async (event) => {
-          event.preventDefault();
-          if (password !== password2) {
-            setError("Passwords don't match");
-            return;
-          }
-
-          const res = await fetch(`/u/${username}`, {
-            method: "POST",
-            body: JSON.stringify({
-              password
-            })
-          });
-
-          if (!res.ok) {
-            setError(await res.text());
-            return;
-          }
+        <div className={"flex flex-col gap-0.5 w-30 p-2".concat(aboutOpen || langOpen ? " pr-1" : "")} style={{
+          transition: "0.5s padding"
         }}>
-          <label>
-            <div><DefaultMessage id="settings.tab.profile.username" /></div>
-            <input type="text" value={username} onChange={(event) => setUsername(event.currentTarget.value)} />
-          </label>
-          <label>
-            <div><DefaultMessage id="sign-up.password-1" /></div>
-            <input type="password" value={password} onChange={(event) => setPassword(event.currentTarget.value)} />
-          </label>
-          <label>
-            <div><DefaultMessage id="sign-up.password-2" /></div>
-            <input type="password" value={password2} onChange={(event) => setPassword2(event.currentTarget.value)} />
-          </label>
-          <input type="submit" value={defaultMessage("sign-up.submit")} />
-        </form>
-        <div style={{
-          boxSizing: "content-box",
-          height: `${error.length > 0 ? 1 : 0}lh`,
-          overflow: "hidden",
-          paddingTop: `${error.length > 0 ? 1 : 0}rem`,
-          transition: "0.25s"
-        }}>{error}</div>
+          <div className="p-0">
+            <img className="w-12 m-auto" src="/Weathercord.svg" alt={APP_NAME} />
+            <h1 className="text-center"><DefaultMessage id="sign-up.header" /></h1>
+          </div>
+          <form onSubmit={async (event) => {
+            event.preventDefault();
+            if (password !== password2) {
+              setError("Passwords don't match");
+              return;
+            }
+
+            const res = await fetch(`/u/${username}`, {
+              method: "POST",
+              body: JSON.stringify({
+                password
+              })
+            });
+
+            if (!res.ok) {
+              setError(await res.text());
+              return;
+            }
+          }}>
+            <label>
+              <div><DefaultMessage id="settings.tab.profile.username" /></div>
+              <input type="text" value={username} onChange={(event) => setUsername(event.currentTarget.value)} />
+            </label>
+            <label>
+              <div><DefaultMessage id="sign-up.password-1" /></div>
+              <input type="password" value={password} onChange={(event) => setPassword(event.currentTarget.value)} />
+            </label>
+            <label>
+              <div><DefaultMessage id="sign-up.password-2" /></div>
+              <input type="password" value={password2} onChange={(event) => setPassword2(event.currentTarget.value)} />
+            </label>
+            <input type="submit" value={defaultMessage("sign-up.submit")} />
+          </form>
+          <div style={{
+            boxSizing: "content-box",
+            height: `${error.length > 0 ? 1 : 0}lh`,
+            overflow: "hidden",
+            paddingTop: `${error.length > 0 ? 1 : 0}rem`,
+            transition: "0.25s"
+          }}>{error}</div>
+          <sub>
+            <div className="flex gap-1 justify-center items-center">
+              <a href="#" onClick={(event) => {
+                event.preventDefault();
+                setAboutOpen(!aboutOpen);
+                setLangOpen(false);
+              }} className={"transition".concat(aboutOpen ? " text-(--accent)" : "")}><DefaultMessage id="settings.tab.about" /></a>
+              <a href="#" onClick={(event) => {
+                event.preventDefault();
+                setAboutOpen(false);
+                setLangOpen(!langOpen);
+              }} className={"transition".concat(langOpen ? " text-(--accent)" : "")}><Globe /></a>
+            </div>
+          </sub>
+        </div>
+        <div className={"pb-2 pl-1 h-full right-0 top-0 absolute ".concat(aboutOpen ? "w-40 pr-2 overflow-y-scroll overflow-x-hidden" : "w-0 pr-0 overflow-hidden")} style={{
+          transition: "0.5s width, 0.5s padding"
+        }}>
+          <div className="w-37 min-h-full">
+            <AboutTab />
+          </div>
+        </div>
+        <div className={"p-2 pl-1 h-full right-0 top-0 absolute overflow-y-scroll overflow-x-hidden ".concat(langOpen ? "w-40" : "w-0 pr-0")} style={{
+          transition: "0.5s width, 0.5s padding"
+        }}>
+          <div className="w-37 h-full">
+            <LanguageTab />
+          </div>
+        </div>
       </Modal>
     </>
   );
