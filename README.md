@@ -12,4 +12,4 @@ npm ci
 npx drizzle-kit push # !! Account creation will fail if not done
 npm run dev
 ```
-Since the db should be empty, this will direct you to a signup page at `https://localhost:3000` (or equivalent)
+Since the db should be empty, this will direct you to a signup page at `http://localhost:3000` (or equivalent)
