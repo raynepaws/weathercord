@@ -8,7 +8,7 @@ After cloning Weathercord, run the following commands to set up a working develo
 ```bash
 cp .env.example .env # This is the quick and dirty way
 mkdir database # !! npx drizzle-kit push will fail if you do not make the database directory specified in .env
-npm i
+npm ci
 npx drizzle-kit push # !! Account creation will fail if not done
 npm run dev
 ```
