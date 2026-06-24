@@ -1,5 +1,5 @@
 div:has(> .lang) {
-  overflow: scroll;
+  overflow: auto;
 }
 
 .lang {

@@ -112,14 +112,14 @@ const SignUpModal = () => {
             </div>
           </sub>
         </div>
-        <div className={"pb-2 pl-1 h-full right-0 top-0 absolute ".concat(aboutOpen ? "w-40 pr-2 overflow-y-scroll overflow-x-hidden" : "w-0 pr-0 overflow-hidden")} style={{
+        <div className={"pb-2 pl-1 h-full right-0 top-0 absolute ".concat(aboutOpen ? "w-40 pr-2 overflow-y-auto overflow-x-hidden" : "w-0 pr-0 overflow-hidden")} style={{
           transition: "0.5s width, 0.5s padding"
         }}>
           <div className="w-37 min-h-full">
             <AboutTab />
           </div>
         </div>
-        <div className={"p-2 pl-1 h-full right-0 top-0 absolute overflow-y-scroll overflow-x-hidden ".concat(langOpen ? "w-40" : "w-0 pr-0")} style={{
+        <div className={"p-2 pl-1 h-full right-0 top-0 absolute overflow-y-auto overflow-x-hidden ".concat(langOpen ? "w-40" : "w-0 pr-0")} style={{
           transition: "0.5s width, 0.5s padding"
         }}>
           <div className="w-37 h-full">
