@@ -2,7 +2,7 @@
 
 import AboutTab from "./AboutTab";
 import { AuthorizedAccountFromAPI } from "@/db/schema";
-import { BadgeInfo, Globe, LoaderCircle, Puzzle, User, X } from "lucide-react";
+import { BadgeInfo, Database, Globe, LoaderCircle, Puzzle, User, X } from "lucide-react";
 import Box from "../Box/Box";
 import BoxButton from "../BoxButton/BoxButton";
 import ConnectionsTab from "./ConnectionsTab";
@@ -12,12 +12,14 @@ import LanguageTab from "./LanguageTab";
 import Modal from "../Modal/Modal";
 import ProfileTab from "./ProfileTab";
 import TabList, { Tab } from "../TabList/TabList";
+import DataTab from "./DataTab";
 
 export enum ModalTab {
   Profile = 0,
   Connections = 1,
   Language = 2,
-  About = 3
+  Data = 3,
+  About = 4
 };
 
 export enum FeedbackStateType {
@@ -45,6 +47,10 @@ const tabList: Tab[] = [
   {
     icon: <Globe strokeWidth={1.5} />,
     name: <DefaultMessage id="settings.tab.language" />
+  },
+  {
+    icon: <Database strokeWidth={1.5} />,
+    name: <DefaultMessage id="settings.tab.data" />
   },
   {
     icon: <BadgeInfo strokeWidth={1.5} />,
@@ -103,6 +109,9 @@ const AccountSettingsModal = (props: {
         }
         {tab === ModalTab.Language &&
           <LanguageTab account={props.account} setAccount={props.setAccount} />
+        }
+        {tab === ModalTab.Data &&
+          <DataTab account={props.account} />
         }
         {tab === ModalTab.About &&
           <AboutTab />
