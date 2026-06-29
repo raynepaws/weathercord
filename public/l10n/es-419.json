@@ -37,6 +37,6 @@
   "settings.tab.profile.username": "Nombre de usuario",
   "sign-up.header": "Unirse a {{APP_NAME}}",
   "sign-up.password-1": "Contraseña",
-  "sign-up.password-2": "Repite Contraseña",
+  "sign-up.password-2": "Repite tu Contraseña",
   "sign-up.submit": "Crear cuenta"
 }
