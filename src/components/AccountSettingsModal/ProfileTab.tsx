@@ -4,15 +4,16 @@ import { AuthorizedAccountFromAPI } from "@/db/schema";
 import Box from "../Box/Box";
 import DefaultMessage, { defaultMessage } from "../DefaultMessage/DefaultMessage";
 import { Dispatch, SetStateAction, useState } from "react";
-import { FeedbackState, FeedbackStateType } from "./AccountSettingsModal";
 import { nullish } from "@/lib/typing";
 import ProfilePopupContent from "../ProfilePopup/ProfilePopupContent";
 import UsernameInput from "../UsernameInput/UsernameInput";
+import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
+import { FeedbackStateType } from "@/lib/feedbackState";
+import { showFeedbackState } from "@/lib/store/reducers/feedbackState";
 
 const ProfileTab = (props: {
   account: AuthorizedAccountFromAPI,
-  setAccount: Dispatch<SetStateAction<AuthorizedAccountFromAPI | null>>,
-  setFeedbackState: Dispatch<SetStateAction<FeedbackState | null>>
+  setAccount: Dispatch<SetStateAction<AuthorizedAccountFromAPI | null>>
 }) => {
   let [customAccent, setCustomAccent] = useState(!!props.account.accent1);
   let [accent1, setAccent1] = useState(props.account.accent1 ?? "#000000");
@@ -28,15 +29,17 @@ const ProfileTab = (props: {
   let [pronouns, setPronouns] = useState(props.account.pronouns ?? "");
   let [username, setUsername] = useState(props.account.username);
 
+  const dispatch = useAppDispatch();
+
   return (
     <div className="flex gap-2 items-start">
       <div className="grow">
         <form onSubmit={async (event) => {
           event.preventDefault();
 
-          props.setFeedbackState({
+          dispatch(showFeedbackState({
             type: FeedbackStateType.Loading
-          });
+          }));
 
           const res = await fetch(`/u/${props.account.username}`, {
             method: "PUT",
@@ -55,10 +58,10 @@ const ProfileTab = (props: {
           });
 
           if (!res.ok) {
-            props.setFeedbackState({
+            dispatch(showFeedbackState({
               type: FeedbackStateType.Error,
               message: await res.text()
-            });
+            }));
             return;
           }
 
@@ -80,10 +83,10 @@ const ProfileTab = (props: {
             pronouns: nullish(pronouns),
             username
           });
-          props.setFeedbackState({
+          dispatch(showFeedbackState({
             type: FeedbackStateType.Message,
             message: "Saved profile"
-          });
+          }));
         }}>
           <label>
             <div><DefaultMessage id="settings.tab.profile.avatar" /></div>

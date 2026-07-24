@@ -15,7 +15,7 @@ export const modalSlice = createSlice({
     },
     openModal: (state, action: PayloadAction<ModalType>) => {
       state[action.payload] = true;
-    },
+    }
   }
 });
 
