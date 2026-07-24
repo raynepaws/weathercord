@@ -5,18 +5,19 @@ import { contributors } from "@/lib/contributors";
 import { Cake, Globe, Heart, Shield, Star } from "lucide-react";
 import { ConnectionType, type PublicAccount } from "@/db/schema";
 import convert from "color-convert";
-import { CSSProperties, Dispatch, SetStateAction } from "react";
+import { CSSProperties } from "react";
 import DefaultMessage from "../DefaultMessage/DefaultMessage";
 import { ModalType } from "@/lib/modals";
 import UsernameIDSwitcher from "./UsernameIDSwitcher";
 import { languages } from "@/lib/l10n";
 import { nullish } from "@/lib/typing";
+import { openModal } from "@/lib/store/reducers/modals";
+import { useAppDispatch } from "@/lib/store/hooks";
 
 const ProfilePopupContent = (props: PublicAccount & {
   canEdit?: boolean,
   className?: string,
-  style?: CSSProperties,
-  setModal?: Dispatch<SetStateAction<ModalType | null>>
+  style?: CSSProperties
 }) => {
   let accent1 = props.accent1;
   let accent2 = props.accent2;
@@ -29,6 +30,8 @@ const ProfilePopupContent = (props: PublicAccount & {
     a2[2] = Math.min(a2[2], 30);
     accent2 = "#" + convert.hsl.hex(a2);
   }
+
+  const dispatch = useAppDispatch();
 
   return (
     <div className={"profileCard text-left " + props.className} style={props.style}>
@@ -100,7 +103,7 @@ const ProfilePopupContent = (props: PublicAccount & {
           </div>
         }
       {props.canEdit && (
-        <button className="action" onClick={() => props.setModal?.(ModalType.AccountSettings)}><DefaultMessage id="profile-popup.edit" /></button>
+        <button className="action" onClick={() => dispatch(openModal(ModalType.AccountSettings))}><DefaultMessage id="profile-popup.edit" /></button>
       )}
       </div>
     </div>

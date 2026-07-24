@@ -1,1 +1,1 @@
-export { default } from "../components/GUI/GUI.tsx";
+export { default } from "../components/App/App.tsx";

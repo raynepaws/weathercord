@@ -6,13 +6,16 @@ import { Dispatch, SetStateAction } from "react";
 import { ModalType } from "@/lib/modals";
 import type { PublicAccount } from "@/db/schema";
 import { Settings } from "lucide-react";
+import { useAppDispatch } from "@/lib/store/hooks";
+import { openModal } from "@/lib/store/reducers/modals";
 
 const UserIndicatorSmall = (props: Record<string, any> & PublicAccount & {
   avatar: string,
   banner?: string,
-  canEdit: boolean,
-  setModal: Dispatch<SetStateAction<ModalType | null>>
+  canEdit: boolean
 }) => {
+  const dispatch = useAppDispatch();
+
   return (
     <Box className={"p-[0.7rem] text-left h-4 flex gap-[0.7rem] items-center overflow-hidden select-none " + props.className} style={{
       backgroundImage: props.banner ? `linear-gradient(90deg, #000000ab 0%, #00000090 100%), url(${props.banner})` : null,
@@ -33,7 +36,7 @@ const UserIndicatorSmall = (props: Record<string, any> & PublicAccount & {
       {props.canEdit &&
         <BoxButton onClick={(event) => {
           event.stopPropagation();
-          props.setModal(ModalType.AccountSettings);
+          dispatch(openModal(ModalType.AccountSettings));
         }}>
           <Settings strokeWidth="1.5" />
         </BoxButton>

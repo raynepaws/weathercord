@@ -9,12 +9,14 @@ import { setl10nData } from "@/lib/l10n";
 import SignUpModal from "../SignUpModal/SignUpModal";
 import { useEffect, useState } from "react";
 import UserIndicator from "../UserIndicator/UserIndicator";
+import { useAppSelector } from "@/lib/store/hooks";
 
 const GUI = () => {
   const [account, setAccount] = useState<AuthorizedAccountFromAPI | null>(null);
   const [loading, setLoading] = useState(true);
-  const [modal, setModal] = useState<ModalType | null>(null);
   const [initialAccountSettingsTab, setInitialAccountSettingsTab] = useState(0);
+
+  const modal = useAppSelector((state) => state.gui.modals);
 
   useEffect(() => {
     fetch("/whoami")
@@ -47,15 +49,15 @@ const GUI = () => {
 
   return (
     <>
-      <div className="contents" inert={modal !== null}>
-        <UserIndicator className="w-20" canEdit {...account} setModal={setModal} />
+      <div className="contents">
+        <UserIndicator className="w-20" canEdit {...account} />
         <Prompt className="absolute bottom-1 left-22" style={{
           width: "calc(100vw - 23rem)"
         }} />
       </div>
 
-      {modal === ModalType.AccountSettings &&
-        <AccountSettingsModal closeModal={() => setModal(null)} account={account} setAccount={setAccount} startingTab={initialAccountSettingsTab} setInitialAccountSettingsTab={setInitialAccountSettingsTab} />
+      {modal[ModalType.AccountSettings] &&
+        <AccountSettingsModal account={account} setAccount={setAccount} startingTab={initialAccountSettingsTab} setInitialAccountSettingsTab={setInitialAccountSettingsTab} />
       }
     </>
   );

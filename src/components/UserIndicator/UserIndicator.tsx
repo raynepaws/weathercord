@@ -11,8 +11,7 @@ import UserIndicatorContentClient from "./UserIndicatorContentClient";
 import UserIndicatorSmall from "./UserIndicatorSmall";
 
 const UserIndicator = (props: Record<string, any> & AuthorizedAccountFromAPI & {
-  canEdit: boolean,
-  setModal: Dispatch<SetStateAction<ModalType | null>>
+  canEdit: boolean
 }) => {
   let accent2 = props.accent2;
   if (accent2) {
