@@ -18,7 +18,7 @@ const UserIndicatorSmall = (props: Record<string, any> & PublicAccount & {
 
   return (
     <Box className={"p-[0.7rem] text-left h-4 flex gap-[0.7rem] items-center overflow-hidden select-none " + props.className} style={{
-      backgroundImage: props.banner ? `linear-gradient(90deg, #000000ab 0%, #00000090 100%), url(${props.banner})` : null,
+      backgroundImage: props.accent1 ? `linear-gradient(90deg, ${props.accent1}aa 0%, ${props.accent1}30 100%)` : null,
       backgroundSize: "cover",
       backgroundPosition: "center"
     }}>
