@@ -1,7 +1,7 @@
 import { AuthorizedAccountFromAPI } from "@/db/schema";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState: AuthorizedAccountFromAPI | null = {
+const initialState: AuthorizedAccountFromAPI = {
   accent1: null,
   accent2: null,
   admin: false,
@@ -21,12 +21,10 @@ const initialState: AuthorizedAccountFromAPI | null = {
 };
 
 export const accountSlice = createSlice({
-  name: "feedbackState",
+  name: "account",
   initialState,
   reducers: {
-    updateAccount: (state, action: PayloadAction<Partial<typeof initialState>>) => {
-      // @ts-ignore
-      if (state === null) state = {};
+    updateAccount: (state, action: PayloadAction<Partial<AuthorizedAccountFromAPI>>) => {
       for (const _key in action.payload) {
         const key = _key as keyof AuthorizedAccountFromAPI;
         // @ts-ignore why does it think `state[key]` is `never` when assigning??

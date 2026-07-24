@@ -10,6 +10,7 @@ import { updateAccount } from "@/lib/store/reducers/account";
 import { useEffect, useState } from "react";
 import UserIndicator from "../UserIndicator/UserIndicator";
 import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
+import { nullish } from "@/lib/typing";
 
 const GUI = () => {
   const [loading, setLoading] = useState(true);
@@ -43,7 +44,7 @@ const GUI = () => {
     <LoadingScreen />
   );
 
-  if (!account) return (
+  if (!nullish(account.id)) return (
     <SignUpModal />
   );
 

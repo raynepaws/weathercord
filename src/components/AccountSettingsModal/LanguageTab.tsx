@@ -7,6 +7,7 @@ import { languages, setl10nData } from "@/lib/l10n";
 import "./LanguageTab.css";
 import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
 import { updateAccount } from "@/lib/store/reducers/account";
+import { nullish } from "@/lib/typing";
 
 const LanguageTab = () => {
   const [lang, setLang] = useState("en-us");
@@ -22,7 +23,7 @@ const LanguageTab = () => {
           {languages.map((language, i) => {
             return (
               <button key={i} className={"lang".concat((account?.lang ?? lang) === language.code ? " active" : "")} onClick={() => {
-                if (account) {
+                if (nullish(account.id)) {
                   dispatch(updateAccount({
                     lang: language.code
                   }));
