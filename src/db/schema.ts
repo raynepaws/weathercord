@@ -65,3 +65,53 @@ export const connectionsTable = sqliteTable("connections", {
   type: text().notNull(),
   value: text().notNull()
 });
+
+export const stationsTable = sqliteTable("stations", {
+  description: text(),
+  everyonePermissions: text().notNull(),
+  id: text().notNull().unique(),
+  inviteLink: text().unique(),
+  // for optimization. keeping track of this number in its own column is much less resource-intensive than having SQLite actually count the number of members
+  memberCount: int().notNull().default(1),
+  name: text().notNull(),
+  owner: text().notNull()
+});
+
+export const categoriesTable = sqliteTable("categories", {
+  description: text(),
+  everyonePermissions: text(),
+  id: text().notNull().unique(),
+  name: text().notNull(),
+  order: int().notNull()
+});
+
+export const channelsTable = sqliteTable("channels", {
+  category: text().notNull(),
+  description: text(),
+  everyonePermissions: text(),
+  id: text().notNull().unique(),
+  name: text().notNull(),
+  order: int().notNull(),
+  type: int().notNull()
+});
+
+export const membershipsTable = sqliteTable("memberships", {
+  accent1: text(),
+  accent2: text(),
+  bio: text(),
+  displayName: text(),
+  id: text().notNull(),
+  joined: int().notNull(),
+  nameFont: text(),
+  showLang: boolean(),
+  station: text().notNull(),
+  pronouns: text()
+});
+
+export const rolesTable = sqliteTable("roles", {
+  color: text(),
+  id: text().notNull().unique(),
+  name: text().notNull(),
+  permissions: text().notNull(),
+  station: text().notNull()
+});
