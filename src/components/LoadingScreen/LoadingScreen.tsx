@@ -1,6 +1,6 @@
 "use client";
 
-import { getRandomTip } from "@/lib/tips";
+import { getRandomTip } from "$/tips";
 import { useEffect, useState } from "react";
 
 const LoadingScreen = () => {

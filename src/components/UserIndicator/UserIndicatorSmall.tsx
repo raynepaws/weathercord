@@ -3,11 +3,11 @@
 import Box from "../Box/Box";
 import BoxButton from "../BoxButton/BoxButton";
 import { Dispatch, SetStateAction } from "react";
-import { ModalType } from "@/lib/modals";
+import { ModalType } from "$/modals";
 import type { PublicAccount } from "@/db/schema";
 import { Settings } from "lucide-react";
-import { useAppDispatch } from "@/lib/store/hooks";
-import { openModal } from "@/lib/store/reducers/modals";
+import { useAppDispatch } from "$/store/hooks";
+import { openModal } from "$/store/reducers/modals";
 
 const UserIndicatorSmall = (props: Record<string, any> & PublicAccount & {
   avatar: string,

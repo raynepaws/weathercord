@@ -3,11 +3,11 @@
 import Box from "../Box/Box";
 import DefaultMessage from "../DefaultMessage/DefaultMessage";
 import { useState } from "react";
-import { languages, setl10nData } from "@/lib/l10n";
+import { languages, setl10nData } from "$/l10n";
 import "./LanguageTab.css";
-import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
-import { updateAccount } from "@/lib/store/reducers/account";
-import { nullish } from "@/lib/typing";
+import { useAppDispatch, useAppSelector } from "$/store/hooks";
+import { updateAccount } from "$/store/reducers/account";
+import { nullish } from "$/typing";
 
 const LanguageTab = () => {
   const [lang, setLang] = useState("en-us");

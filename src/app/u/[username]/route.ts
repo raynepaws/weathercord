@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import { count, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { hash } from "bcrypt";
-import { nullish } from "@/lib/typing";
+import { nullish } from "$/typing";
 import { rm, writeFile } from "node:fs/promises";
 import { spawn } from "node:child_process";
 

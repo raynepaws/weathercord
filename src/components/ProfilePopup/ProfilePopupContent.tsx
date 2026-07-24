@@ -1,18 +1,18 @@
 "use client";
 
 import Badge from "./Badge";
-import { contributors } from "@/lib/contributors";
+import { contributors } from "$/contributors";
 import { Cake, Globe, Heart, Shield, Star } from "lucide-react";
 import { ConnectionType, type PublicAccount } from "@/db/schema";
 import convert from "color-convert";
 import { CSSProperties } from "react";
 import DefaultMessage from "../DefaultMessage/DefaultMessage";
-import { ModalType } from "@/lib/modals";
+import { ModalType } from "$/modals";
 import UsernameIDSwitcher from "./UsernameIDSwitcher";
-import { languages } from "@/lib/l10n";
-import { nullish } from "@/lib/typing";
-import { openModal } from "@/lib/store/reducers/modals";
-import { useAppDispatch } from "@/lib/store/hooks";
+import { languages } from "$/l10n";
+import { nullish } from "$/typing";
+import { openModal } from "$/store/reducers/modals";
+import { useAppDispatch } from "$/store/hooks";
 
 const ProfilePopupContent = (props: PublicAccount & {
   canEdit?: boolean,

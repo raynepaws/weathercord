@@ -1,4 +1,4 @@
-import { APP_NAME } from "@/lib/constants";
+import { APP_NAME } from "$/constants";
 import { Geist, Geist_Mono } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";

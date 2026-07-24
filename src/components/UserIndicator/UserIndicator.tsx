@@ -4,12 +4,12 @@ import type { AuthorizedAccountFromAPI } from "@/db/schema";
 import Box from "../Box/Box";
 import convert from "color-convert";
 import { Dispatch, SetStateAction } from "react";
-import { ModalType } from "@/lib/modals";
+import { ModalType } from "$/modals";
 import ProfilePopupContent from "../ProfilePopup/ProfilePopupContent";
 import UserIndicatorClient from "./UserIndicatorClient";
 import UserIndicatorContentClient from "./UserIndicatorContentClient";
 import UserIndicatorSmall from "./UserIndicatorSmall";
-import { useAppSelector } from "@/lib/store/hooks";
+import { useAppSelector } from "$/store/hooks";
 
 const UserIndicator = (props: Record<string, any> & {
   canEdit: boolean

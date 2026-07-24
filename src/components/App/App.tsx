@@ -1,6 +1,6 @@
 "use client";
 
-import { store } from "@/lib/store/hooks";
+import { store } from "$/store/hooks";
 import GUI from "../GUI/GUI";
 import { Provider } from "react-redux";
 

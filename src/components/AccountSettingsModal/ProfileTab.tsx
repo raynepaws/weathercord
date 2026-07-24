@@ -3,13 +3,13 @@
 import Box from "../Box/Box";
 import DefaultMessage, { defaultMessage } from "../DefaultMessage/DefaultMessage";
 import { useState } from "react";
-import { nullish } from "@/lib/typing";
+import { nullish } from "$/typing";
 import ProfilePopupContent from "../ProfilePopup/ProfilePopupContent";
 import UsernameInput from "../UsernameInput/UsernameInput";
-import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
-import { FeedbackStateType } from "@/lib/feedbackState";
-import { showFeedbackState } from "@/lib/store/reducers/feedbackState";
-import { updateAccount } from "@/lib/store/reducers/account";
+import { useAppDispatch, useAppSelector } from "$/store/hooks";
+import { FeedbackStateType } from "$/feedbackState";
+import { showFeedbackState } from "$/store/reducers/feedbackState";
+import { updateAccount } from "$/store/reducers/account";
 
 const ProfileTab = () => {
   const dispatch = useAppDispatch();

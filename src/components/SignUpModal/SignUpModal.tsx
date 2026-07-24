@@ -1,7 +1,7 @@
 "use client";
 
 import AboutTab from "../AccountSettingsModal/AboutTab";
-import { APP_NAME } from "@/lib/constants";
+import { APP_NAME } from "$/constants";
 import DefaultMessage, { defaultMessage } from "../DefaultMessage/DefaultMessage";
 import { Globe } from "lucide-react";
 import LanguageTab from "../AccountSettingsModal/LanguageTab";

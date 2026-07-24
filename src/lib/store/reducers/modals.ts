@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ModalType } from "@/lib/modals";
+import { ModalType } from "$/modals";
 
 const initialState = {
   [ModalType.AccountSettings]: false,

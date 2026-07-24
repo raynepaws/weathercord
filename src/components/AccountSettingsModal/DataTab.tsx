@@ -1,5 +1,5 @@
 import { accountsTable, AuthorizedAccountFromAPI } from "@/db/schema";
-import { useAppSelector } from "@/lib/store/hooks";
+import { useAppSelector } from "$/store/hooks";
 import { SQLiteColumn } from "drizzle-orm/sqlite-core";
 
 const typeString = (column: SQLiteColumn) => {

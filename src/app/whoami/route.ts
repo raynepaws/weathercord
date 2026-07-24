@@ -2,7 +2,7 @@ import { accountsTable, AuthorizedAccountFromAPI, Connection, connectionsTable, 
 import { cookies } from "next/headers";
 import { db } from "@/db";
 import { eq } from "drizzle-orm";
-import { nullish } from "@/lib/typing";
+import { nullish } from "$/typing";
 
 export async function GET(_: Request) {
   const authCookie = (await cookies()).get("auth")?.value;

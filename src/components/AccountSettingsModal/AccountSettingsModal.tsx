@@ -4,19 +4,19 @@ import AboutTab from "./AboutTab";
 import { BadgeInfo, Database, Globe, LoaderCircle, Puzzle, User, X } from "lucide-react";
 import Box from "../Box/Box";
 import BoxButton from "../BoxButton/BoxButton";
-import { closeModal } from "@/lib/store/reducers/modals";
+import { closeModal } from "$/store/reducers/modals";
 import ConnectionsTab from "./ConnectionsTab";
 import DataTab from "./DataTab";
 import DefaultMessage from "../DefaultMessage/DefaultMessage";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { FeedbackStateType } from "@/lib/feedbackState";
-import { hideFeedbackState } from "@/lib/store/reducers/feedbackState";
+import { FeedbackStateType } from "$/feedbackState";
+import { hideFeedbackState } from "$/store/reducers/feedbackState";
 import LanguageTab from "./LanguageTab";
 import Modal from "../Modal/Modal";
-import { ModalType } from "@/lib/modals";
+import { ModalType } from "$/modals";
 import ProfileTab from "./ProfileTab";
 import TabList, { Tab } from "../TabList/TabList";
-import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
+import { useAppDispatch, useAppSelector } from "$/store/hooks";
 
 export enum ModalTab {
   Profile = 0,

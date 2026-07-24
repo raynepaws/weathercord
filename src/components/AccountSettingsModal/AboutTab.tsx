@@ -1,6 +1,6 @@
-import { APP_NAME } from "@/lib/constants";
+import { APP_NAME } from "$/constants";
 import Box from "../Box/Box";
-import { contributors, team } from "@/lib/contributors";
+import { contributors, team } from "$/contributors";
 import DefaultMessage from "../DefaultMessage/DefaultMessage";
 import { FileText, Hammer, Heart, Quote } from "lucide-react";
 

@@ -2,15 +2,15 @@
 
 import AccountSettingsModal from "../AccountSettingsModal/AccountSettingsModal";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
-import { ModalType } from "@/lib/modals";
+import { ModalType } from "$/modals";
 import { Prompt } from "../Prompt/Prompt";
-import { setl10nData } from "@/lib/l10n";
+import { setl10nData } from "$/l10n";
 import SignUpModal from "../SignUpModal/SignUpModal";
-import { updateAccount } from "@/lib/store/reducers/account";
+import { updateAccount } from "$/store/reducers/account";
 import { useEffect, useState } from "react";
 import UserIndicator from "../UserIndicator/UserIndicator";
-import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
-import { nullish } from "@/lib/typing";
+import { useAppDispatch, useAppSelector } from "$/store/hooks";
+import { nullish } from "$/typing";
 
 const GUI = () => {
   const [loading, setLoading] = useState(true);
