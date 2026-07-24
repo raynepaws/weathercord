@@ -22,7 +22,7 @@ const LanguageTab = () => {
         <div className="flex flex-col rounded-2xl">
           {languages.map((language, i) => {
             return (
-              <button key={i} className={"lang".concat((account?.lang ?? lang) === language.code ? " active" : "")} onClick={() => {
+              <button key={i} className={"lang".concat((nullish(account.id) ? account.lang : lang) === language.code ? " active" : "")} onClick={() => {
                 if (nullish(account.id)) {
                   dispatch(updateAccount({
                     lang: language.code
