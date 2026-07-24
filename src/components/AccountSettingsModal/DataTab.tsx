@@ -1,4 +1,5 @@
 import { accountsTable, AuthorizedAccountFromAPI } from "@/db/schema";
+import { useAppSelector } from "@/lib/store/hooks";
 import { SQLiteColumn } from "drizzle-orm/sqlite-core";
 
 const typeString = (column: SQLiteColumn) => {
@@ -26,15 +27,14 @@ const renderData = (data: string | number | boolean | null) => {
   }
 }
 
-const DataTab = (props: {
-  account: AuthorizedAccountFromAPI
-}) => {
+const DataTab = () => {
+  const account = useAppSelector((state) => state.account);
+
   return (
     <table>
       <tbody>
-        {Object.keys(props.account).sort().map((_key) => {
+        {Object.keys(account).sort().map((_key) => {
           if (["avatar", "banner", "connections"].includes(_key)) return;
-          console.log(_key);
           const key = _key as keyof AuthorizedAccountFromAPI & keyof typeof accountsTable;
           return (
             <tr key={key}>
@@ -45,7 +45,7 @@ const DataTab = (props: {
               <td className="p-1">
                 <pre>
                   <code>
-                    {renderData(props.account[key])}
+                    {renderData(account[key])}
                   </code>
                 </pre>
               </td>

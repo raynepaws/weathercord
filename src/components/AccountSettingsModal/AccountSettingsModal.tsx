@@ -1,7 +1,6 @@
 "use client";
 
 import AboutTab from "./AboutTab";
-import { AuthorizedAccountFromAPI } from "@/db/schema";
 import { BadgeInfo, Database, Globe, LoaderCircle, Puzzle, User, X } from "lucide-react";
 import Box from "../Box/Box";
 import BoxButton from "../BoxButton/BoxButton";
@@ -10,14 +9,14 @@ import ConnectionsTab from "./ConnectionsTab";
 import DataTab from "./DataTab";
 import DefaultMessage from "../DefaultMessage/DefaultMessage";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { FeedbackStateType } from "@/lib/feedbackState";
+import { hideFeedbackState } from "@/lib/store/reducers/feedbackState";
 import LanguageTab from "./LanguageTab";
 import Modal from "../Modal/Modal";
 import { ModalType } from "@/lib/modals";
 import ProfileTab from "./ProfileTab";
 import TabList, { Tab } from "../TabList/TabList";
 import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
-import { FeedbackState, FeedbackStateType } from "@/lib/feedbackState";
-import { hideFeedbackState } from "@/lib/store/reducers/feedbackState";
 
 export enum ModalTab {
   Profile = 0,
@@ -51,8 +50,6 @@ const tabList: Tab[] = [
 ];
 
 const AccountSettingsModal = (props: {
-  account: AuthorizedAccountFromAPI,
-  setAccount: Dispatch<SetStateAction<AuthorizedAccountFromAPI | null>>,
   setInitialAccountSettingsTab: Dispatch<SetStateAction<number>>,
   startingTab?: ModalTab
 }) => {
@@ -92,16 +89,16 @@ const AccountSettingsModal = (props: {
       <TabList className="w-16 shrink-0 -m-2 p-2 pr-1 -mr-1 relative" tab={tab} tabList={tabList} setTab={setTab} />
       <div className="grow overflow-auto -m-2 p-2 pl-1 -ml-1">
         {tab === ModalTab.Profile &&
-          <ProfileTab account={props.account} setAccount={props.setAccount} />
+          <ProfileTab />
         }
         {tab === ModalTab.Connections &&
-          <ConnectionsTab account={props.account} />
+          <ConnectionsTab />
         }
         {tab === ModalTab.Language &&
-          <LanguageTab account={props.account} setAccount={props.setAccount} />
+          <LanguageTab />
         }
         {tab === ModalTab.Data &&
-          <DataTab account={props.account} />
+          <DataTab />
         }
         {tab === ModalTab.About &&
           <AboutTab />

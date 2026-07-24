@@ -1,9 +1,11 @@
+import { accountReducer } from "./reducers/account";
 import { configureStore } from "@reduxjs/toolkit";
 import { guiReducer } from "./reducers/gui";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 export const store = configureStore({
   reducer: {
+    account: accountReducer,
     gui: guiReducer
   }
 });

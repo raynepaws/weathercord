@@ -1,35 +1,33 @@
 "use client";
 
-import { AuthorizedAccountFromAPI } from "@/db/schema";
 import Box from "../Box/Box";
 import DefaultMessage, { defaultMessage } from "../DefaultMessage/DefaultMessage";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 import { nullish } from "@/lib/typing";
 import ProfilePopupContent from "../ProfilePopup/ProfilePopupContent";
 import UsernameInput from "../UsernameInput/UsernameInput";
 import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
 import { FeedbackStateType } from "@/lib/feedbackState";
 import { showFeedbackState } from "@/lib/store/reducers/feedbackState";
+import { updateAccount } from "@/lib/store/reducers/account";
 
-const ProfileTab = (props: {
-  account: AuthorizedAccountFromAPI,
-  setAccount: Dispatch<SetStateAction<AuthorizedAccountFromAPI | null>>
-}) => {
-  let [customAccent, setCustomAccent] = useState(!!props.account.accent1);
-  let [accent1, setAccent1] = useState(props.account.accent1 ?? "#000000");
-  let [accent2, setAccent2] = useState(props.account.accent2 ?? "#000000");
-  let [avatarFile, setAvatarFile] = useState<File | null>(null);
-  let [avatarPreviewURL, setAvatarPreviewURL] = useState(`/u/${props.account.username}/a`);
-  let [bannerFile, setBannerFile] = useState<File | null>(null);
-  let [bannerPreviewURL, setBannerPreviewURL] = useState(`/u/${props.account.username}/b`);
-  let [bio, setBio] = useState(props.account.bio ?? "");
-  let [displayName, setDisplayName] = useState(props.account.displayName ?? "");
-  let [showLang, setShowLang] = useState(!!props.account.showLang);
-  let [nameFont, setNameFont] = useState(props.account.nameFont ?? "");
-  let [pronouns, setPronouns] = useState(props.account.pronouns ?? "");
-  let [username, setUsername] = useState(props.account.username);
-
+const ProfileTab = () => {
   const dispatch = useAppDispatch();
+  const account = useAppSelector((state) => state.account);
+
+  let [customAccent, setCustomAccent] = useState(!!account.accent1);
+  let [accent1, setAccent1] = useState(account.accent1 ?? "#000000");
+  let [accent2, setAccent2] = useState(account.accent2 ?? "#000000");
+  let [avatarFile, setAvatarFile] = useState<File | null>(null);
+  let [avatarPreviewURL, setAvatarPreviewURL] = useState(`/u/${account.username}/a`);
+  let [bannerFile, setBannerFile] = useState<File | null>(null);
+  let [bannerPreviewURL, setBannerPreviewURL] = useState(`/u/${account.username}/b`);
+  let [bio, setBio] = useState(account.bio ?? "");
+  let [displayName, setDisplayName] = useState(account.displayName ?? "");
+  let [showLang, setShowLang] = useState(!!account.showLang);
+  let [nameFont, setNameFont] = useState(account.nameFont ?? "");
+  let [pronouns, setPronouns] = useState(account.pronouns ?? "");
+  let [username, setUsername] = useState(account.username);
 
   return (
     <div className="flex gap-2 items-start">
@@ -41,7 +39,7 @@ const ProfileTab = (props: {
             type: FeedbackStateType.Loading
           }));
 
-          const res = await fetch(`/u/${props.account.username}`, {
+          const res = await fetch(`/u/${account.username}`, {
             method: "PUT",
             body: JSON.stringify({
               accent1,
@@ -65,24 +63,18 @@ const ProfileTab = (props: {
             return;
           }
 
-          props.setAccount({
+          dispatch(updateAccount({
             accent1: customAccent ? accent1 : null,
             accent2: customAccent ? accent2 : null,
-            admin: props.account.admin,
             avatar: avatarPreviewURL,
             banner: bannerPreviewURL,
             bio: nullish(bio.trim()),
-            connections: props.account.connections,
             displayName: nullish(displayName.trim()),
-            email: props.account.email,
-            id: props.account.id,
-            joined: props.account.joined,
-            lang: props.account.lang,
             showLang: showLang,
             nameFont: nullish(nameFont),
             pronouns: nullish(pronouns),
             username
-          });
+          }));
           dispatch(showFeedbackState({
             type: FeedbackStateType.Message,
             message: "Saved profile"
@@ -141,7 +133,7 @@ const ProfileTab = (props: {
               <option value="Goldman"><DefaultMessage id="settings.tab.profile.name-font.techno" /></option>
             </select>
           </label>
-          <UsernameInput account={props.account} username={username} setUsername={setUsername} />
+          <UsernameInput account={account} username={username} setUsername={setUsername} />
           <label>
             <div><DefaultMessage id="settings.tab.profile.pronouns" /></div>
             <input type="text" value={pronouns} onChange={(event) => setPronouns(event.currentTarget.value)} />
@@ -167,15 +159,15 @@ const ProfileTab = (props: {
         <ProfilePopupContent
           accent1={customAccent ? accent1 : null}
           accent2={customAccent ? accent2 : null}
-          admin={props.account.admin}
+          admin={account.admin}
           avatar={avatarPreviewURL}
           banner={bannerPreviewURL}
           bio={nullish(bio)}
-          connections={props.account.connections}
+          connections={account.connections}
           displayName={nullish(displayName)}
-          id={props.account.id}
-          joined={props.account.joined}
-          lang={props.account.lang}
+          id={account.id}
+          joined={account.joined}
+          lang={account.lang}
           showLang={showLang}
           nameFont={nullish(nameFont)}
           pronouns={nullish(pronouns)}

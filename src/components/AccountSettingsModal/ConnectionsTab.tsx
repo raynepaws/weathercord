@@ -19,13 +19,7 @@ const connectionOptions: ConnectionOption[] = [
   }
 ];
 
-const ConnectionsTab = (props: {
-  account: AuthorizedAccountFromAPI
-}) => {
-  let [connections, setConnections] = useState(props.account.connections);
-
-  let [error, setError] = useState("");
-
+const ConnectionsTab = () => {
   return (
     <>
       <h1><DefaultMessage id="settings.tab.connections" /></h1>

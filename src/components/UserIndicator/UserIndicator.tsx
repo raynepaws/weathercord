@@ -9,11 +9,14 @@ import ProfilePopupContent from "../ProfilePopup/ProfilePopupContent";
 import UserIndicatorClient from "./UserIndicatorClient";
 import UserIndicatorContentClient from "./UserIndicatorContentClient";
 import UserIndicatorSmall from "./UserIndicatorSmall";
+import { useAppSelector } from "@/lib/store/hooks";
 
-const UserIndicator = (props: Record<string, any> & AuthorizedAccountFromAPI & {
+const UserIndicator = (props: Record<string, any> & {
   canEdit: boolean
 }) => {
-  let accent2 = props.accent2;
+  let account = useAppSelector((state) => state.account);
+
+  let accent2 = account.accent2;
   if (accent2) {
     let a2 = convert.hex.hsv(accent2);
     a2[2] = Math.min(a2[2], 30);
@@ -27,11 +30,11 @@ const UserIndicator = (props: Record<string, any> & AuthorizedAccountFromAPI & {
         backgroundColor: accent2 ?? "var(--background)"
       }}>
         <UserIndicatorContentClient>
-          <ProfilePopupContent {...props} />
+          <ProfilePopupContent {...props} {...account} />
         </UserIndicatorContentClient>
       </div>
       <UserIndicatorClient>
-        <UserIndicatorSmall {...props} />
+        <UserIndicatorSmall {...props} {...account} />
       </UserIndicatorClient>
     </Box>
   );
