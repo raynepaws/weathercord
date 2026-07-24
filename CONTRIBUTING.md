@@ -15,3 +15,4 @@ If you would like to fix a bug or implement a new feature, you can choose an iss
 ## Contribution Guidelines
 - Please write descriptive and accurate commit messages.
 - If your changes can't be summed up in a short commit message, the commit is too large. Commit often.
+- Use relative paths to a minimal degree. Instead, make use of path aliases. `@` = `./src`, `$` = `./src/lib`
