@@ -1,7 +1,7 @@
 import { AuthorizedAccountFromAPI } from "@/db/schema";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState: Partial<AuthorizedAccountFromAPI> | null = {
+const initialState: AuthorizedAccountFromAPI | null = {
   accent1: null,
   accent2: null,
   admin: false,
@@ -25,6 +25,7 @@ export const accountSlice = createSlice({
   initialState,
   reducers: {
     updateAccount: (state, action: PayloadAction<Partial<typeof initialState>>) => {
+      // @ts-ignore
       if (state === null) state = {};
       for (const _key in action.payload) {
         const key = _key as keyof AuthorizedAccountFromAPI;

@@ -1,17 +1,19 @@
 "use client";
 
-import { AuthorizedAccountFromAPI } from "@/db/schema";
 import Box from "../Box/Box";
 import DefaultMessage from "../DefaultMessage/DefaultMessage";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 import { languages, setl10nData } from "@/lib/l10n";
 import "./LanguageTab.css";
+import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
+import { updateAccount } from "@/lib/store/reducers/account";
 
-const LanguageTab = (props: {
-  account?: AuthorizedAccountFromAPI,
-  setAccount?: Dispatch<SetStateAction<AuthorizedAccountFromAPI | null>>
-}) => {
+const LanguageTab = () => {
   const [lang, setLang] = useState("en-us");
+
+  const dispatch = useAppDispatch();
+  const account = useAppSelector((state) => state.account);
+
   return (
     <div className="h-full flex flex-col gap-1">
       <h1><DefaultMessage id="settings.tab.language" /></h1>
@@ -19,13 +21,12 @@ const LanguageTab = (props: {
         <div className="flex flex-col rounded-2xl">
           {languages.map((language, i) => {
             return (
-              <button key={i} className={"lang".concat((props.account?.lang ?? lang) === language.code ? " active" : "")} onClick={() => {
-                if (props.account && props.setAccount) {
-                  props.setAccount({
-                    ...props.account,
+              <button key={i} className={"lang".concat((account?.lang ?? lang) === language.code ? " active" : "")} onClick={() => {
+                if (account) {
+                  dispatch(updateAccount({
                     lang: language.code
-                  });
-                  fetch(`/u/${encodeURIComponent(props.account.username)}/lang`, {
+                  }));
+                  fetch(`/u/${encodeURIComponent(account.username)}/lang`, {
                     method: "PUT",
                     body: JSON.stringify({
                       lang: language.code
