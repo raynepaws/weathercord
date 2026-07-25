@@ -4,52 +4,22 @@ import AccountSettingsModal from "./AccountSettingsModal/AccountSettingsModal";
 import LoadingScreen from "./LoadingScreen";
 import { ModalType } from "$/modals";
 import { Prompt } from "./Prompt";
-import { setl10nData } from "$/l10n";
 import SignUpModal from "./SignUpModal";
-import { updateAccount } from "$/store/reducers/account";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import UserIndicator from "./UserIndicator/UserIndicator";
-import { useAppDispatch, useAppSelector } from "$/store/hooks";
+import { useAppSelector } from "$/store/hooks";
 import { nullish } from "$/typing";
-import { hideFeedbackState } from "@/lib/store/reducers/feedbackState";
 import { FeedbackStateType } from "@/lib/feedbackState";
 import { LoaderCircle } from "lucide-react";
 import Box from "./Box";
 
 const GUI = () => {
-  const [feedbackStateTimeout, setFeedbackStateTimeout] = useState<NodeJS.Timeout | null>(null);
-  const [loading, setLoading] = useState(true);
   const [initialAccountSettingsTab, setInitialAccountSettingsTab] = useState(0);
 
-  const dispatch = useAppDispatch();
   const account = useAppSelector((state) => state.account);
   const feedbackState = useAppSelector((state) => state.gui.feedbackState);
+  const loading = useAppSelector((state) => state.gui.loading.loading);
   const modals = useAppSelector((state) => state.gui.modals);
-
-  useEffect(() => {
-    fetch("/whoami")
-      .then((res) => {
-        if (res.ok) res.json()
-          .then((account) => {
-            dispatch(updateAccount(account));
-            setl10nData(account.lang)
-              .then(() => setLoading(false));
-          });
-        else {
-          setl10nData("en-us")
-            .then(() => setLoading(false));
-        }
-      });
-  }, [0]);
-
-  useEffect(() => {
-    setl10nData(account?.lang ?? "en-us");
-  }, [account]);
-
-  useEffect(() => {
-    if (feedbackStateTimeout) clearTimeout(feedbackStateTimeout);
-    if (feedbackState) setFeedbackStateTimeout(setTimeout(() => dispatch(hideFeedbackState()), feedbackState.type === FeedbackStateType.Message ? 5000 : 8000));
-  }, [feedbackState]);
 
   if (loading) return (
     <LoadingScreen />
