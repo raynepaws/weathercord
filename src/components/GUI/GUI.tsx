@@ -50,7 +50,7 @@ const GUI = () => {
 
   return (
     <>
-      <div className="contents">
+      <div className="contents" inert={Object.values(modals).includes(true)}>
         <UserIndicator className="w-20" canEdit />
         <Prompt className="absolute bottom-1 left-22" style={{
           width: "calc(100vw - 23rem)"

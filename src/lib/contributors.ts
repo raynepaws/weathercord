@@ -24,7 +24,7 @@ const people = {
       username: "raynepaws",
       id: "129226914"
     },
-    quote: "i love tally"
+    quote: "wethmercor"
   },
   tally: {
     id: "1w053d3942035cb9",
