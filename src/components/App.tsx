@@ -1,7 +1,7 @@
 "use client";
 
 import { store } from "$/store/hooks";
-import GUI from "../GUI/GUI";
+import GUI from "./GUI";
 import { Provider } from "react-redux";
 
 const App = () => {

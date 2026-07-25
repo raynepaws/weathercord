@@ -1,20 +1,20 @@
 "use client";
 
-import AccountSettingsModal from "../AccountSettingsModal/AccountSettingsModal";
-import LoadingScreen from "../LoadingScreen/LoadingScreen";
+import AccountSettingsModal from "./AccountSettingsModal/AccountSettingsModal";
+import LoadingScreen from "./LoadingScreen";
 import { ModalType } from "$/modals";
-import { Prompt } from "../Prompt/Prompt";
+import { Prompt } from "./Prompt";
 import { setl10nData } from "$/l10n";
-import SignUpModal from "../SignUpModal/SignUpModal";
+import SignUpModal from "./SignUpModal";
 import { updateAccount } from "$/store/reducers/account";
 import { useEffect, useState } from "react";
-import UserIndicator from "../UserIndicator/UserIndicator";
+import UserIndicator from "./UserIndicator/UserIndicator";
 import { useAppDispatch, useAppSelector } from "$/store/hooks";
 import { nullish } from "$/typing";
 import { hideFeedbackState } from "@/lib/store/reducers/feedbackState";
 import { FeedbackStateType } from "@/lib/feedbackState";
 import { LoaderCircle } from "lucide-react";
-import Box from "../Box/Box";
+import Box from "./Box";
 
 const GUI = () => {
   const [feedbackStateTimeout, setFeedbackStateTimeout] = useState<NodeJS.Timeout | null>(null);

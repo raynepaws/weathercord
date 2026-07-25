@@ -1,11 +1,11 @@
 "use client";
 
-import Box from "../Box/Box";
-import DefaultMessage, { defaultMessage } from "../DefaultMessage/DefaultMessage";
+import Box from "../Box";
+import DefaultMessage, { defaultMessage } from "../DefaultMessage";
 import { useState } from "react";
 import { nullish } from "$/typing";
 import ProfilePopupContent from "../ProfilePopup/ProfilePopupContent";
-import UsernameInput from "../UsernameInput/UsernameInput";
+import UsernameInput from "../UsernameInput";
 import { useAppDispatch, useAppSelector } from "$/store/hooks";
 import { FeedbackStateType } from "$/feedbackState";
 import { showFeedbackState } from "$/store/reducers/feedbackState";

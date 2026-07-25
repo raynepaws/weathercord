@@ -1,7 +1,7 @@
 // this is really messy and i really don't wanna fix it. so whatever.
 
 import type { AuthorizedAccountFromAPI } from "@/db/schema";
-import Box from "../Box/Box";
+import Box from "../Box";
 import convert from "color-convert";
 import { Dispatch, SetStateAction } from "react";
 import { ModalType } from "$/modals";

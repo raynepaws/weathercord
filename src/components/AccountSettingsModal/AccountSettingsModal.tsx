@@ -2,17 +2,17 @@
 
 import AboutTab from "./AboutTab";
 import { BadgeInfo, Database, Globe, Puzzle, User, X } from "lucide-react";
-import BoxButton from "../BoxButton/BoxButton";
+import BoxButton from "../BoxButton";
 import { closeModal } from "$/store/reducers/modals";
 import ConnectionsTab from "./ConnectionsTab";
 import DataTab from "./DataTab";
-import DefaultMessage from "../DefaultMessage/DefaultMessage";
+import DefaultMessage from "../DefaultMessage";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import LanguageTab from "./LanguageTab";
-import Modal from "../Modal/Modal";
+import Modal from "../Modal";
 import { ModalType } from "$/modals";
 import ProfileTab from "./ProfileTab";
-import TabList, { Tab } from "../TabList/TabList";
+import TabList, { Tab } from "../TabList";
 import { useAppDispatch, useAppSelector } from "$/store/hooks";
 
 export enum ModalTab {

@@ -1,12 +1,12 @@
 "use client";
 
-import AboutTab from "../AccountSettingsModal/AboutTab";
+import AboutTab from "./AccountSettingsModal/AboutTab";
 import { APP_NAME } from "$/constants";
-import DefaultMessage, { defaultMessage } from "../DefaultMessage/DefaultMessage";
+import DefaultMessage, { defaultMessage } from "./DefaultMessage";
 import { Globe } from "lucide-react";
-import LanguageTab from "../AccountSettingsModal/LanguageTab";
-import Modal from "../Modal/Modal";
-import UsernameInput from "../UsernameInput/UsernameInput";
+import LanguageTab from "./AccountSettingsModal/LanguageTab";
+import Modal from "./Modal";
+import UsernameInput from "./UsernameInput";
 import { useState } from "react";
 
 const pictures = 10;

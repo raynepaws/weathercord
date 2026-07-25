@@ -1,4 +1,4 @@
-import Box from "../Box/Box";
+import Box from "./Box";
 import { ReactNode } from "react"
 
 const Modal = (props: Record<string, any> & {

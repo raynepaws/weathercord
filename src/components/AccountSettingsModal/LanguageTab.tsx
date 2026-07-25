@@ -1,7 +1,7 @@
 "use client";
 
-import Box from "../Box/Box";
-import DefaultMessage from "../DefaultMessage/DefaultMessage";
+import Box from "../Box";
+import DefaultMessage from "../DefaultMessage";
 import { useState } from "react";
 import { languages, setl10nData } from "$/l10n";
 import "./LanguageTab.css";

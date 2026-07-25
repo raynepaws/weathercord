@@ -1,7 +1,7 @@
 "use client";
 
-import Box from "../Box/Box";
-import BoxButton from "../BoxButton/BoxButton";
+import Box from "../Box";
+import BoxButton from "../BoxButton";
 import { Dispatch, SetStateAction } from "react";
 import { ModalType } from "$/modals";
 import type { PublicAccount } from "@/db/schema";

@@ -1,6 +1,6 @@
 "use client";
 
-import Box from "../Box/Box";
+import Box from "./Box";
 import { useEffect, useState } from "react";
 
 export const Prompt = (props: Record<string, any> & {

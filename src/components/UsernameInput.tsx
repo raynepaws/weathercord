@@ -1,5 +1,5 @@
 import { AuthorizedAccountFromAPI } from "@/db/schema";
-import DefaultMessage from "../DefaultMessage/DefaultMessage";
+import DefaultMessage from "./DefaultMessage";
 import { Dispatch, SetStateAction, useState } from "react";
 
 const UsernameInput = (props: {

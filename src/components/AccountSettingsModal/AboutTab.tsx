@@ -1,7 +1,7 @@
 import { APP_NAME } from "$/constants";
-import Box from "../Box/Box";
+import Box from "../Box";
 import { contributors, team } from "$/contributors";
-import DefaultMessage from "../DefaultMessage/DefaultMessage";
+import DefaultMessage from "../DefaultMessage";
 import { FileText, Hammer, Heart, Quote } from "lucide-react";
 
 const AboutTab = () => {

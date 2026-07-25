@@ -6,7 +6,7 @@ import { Cake, Globe, Heart, Shield, Star } from "lucide-react";
 import { ConnectionType, type PublicAccount } from "@/db/schema";
 import convert from "color-convert";
 import { CSSProperties } from "react";
-import DefaultMessage from "../DefaultMessage/DefaultMessage";
+import DefaultMessage from "../DefaultMessage";
 import { ModalType } from "$/modals";
 import UsernameIDSwitcher from "./UsernameIDSwitcher";
 import { languages } from "$/l10n";

@@ -1,9 +1,9 @@
 "use client";
 
-import ActionRow from "../ActionRow/ActionRow";
+import ActionRow from "../ActionRow";
 import { AuthorizedAccountFromAPI, ConnectionType } from "@/db/schema";
-import Box from "../Box/Box";
-import DefaultMessage from "../DefaultMessage/DefaultMessage";
+import Box from "../Box";
+import DefaultMessage from "../DefaultMessage";
 import { Globe } from "lucide-react";
 import { ReactNode, useState } from "react";
 
