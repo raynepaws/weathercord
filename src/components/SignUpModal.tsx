@@ -8,6 +8,9 @@ import LanguageTab from "./AccountSettingsModal/LanguageTab";
 import Modal from "./Modal";
 import UsernameInput from "./UsernameInput";
 import { useState } from "react";
+import { hideFeedbackState, showFeedbackState } from "@/lib/store/reducers/feedbackState";
+import { FeedbackStateType } from "@/lib/feedbackState";
+import { useAppDispatch } from "@/lib/store/hooks";
 
 const pictures = 10;
 
@@ -45,7 +48,7 @@ const SignUpModal = () => {
   let [password, setPassword] = useState("");
   let [password2, setPassword2] = useState("");
 
-  let [error, setError] = useState("");
+  const dispatch = useAppDispatch();
 
   return (
     <>
@@ -63,9 +66,16 @@ const SignUpModal = () => {
           <form onSubmit={async (event) => {
             event.preventDefault();
             if (password !== password2) {
-              setError("Passwords don't match");
+              dispatch(showFeedbackState({
+                type: FeedbackStateType.Error,
+                message: "Passwords don't match"
+              }));
               return;
             }
+
+            dispatch(showFeedbackState({
+              type: FeedbackStateType.Loading,
+            }));
 
             const res = await fetch(`/u/${username}`, {
               method: "POST",
@@ -74,8 +84,13 @@ const SignUpModal = () => {
               })
             });
 
-            if (!res.ok) {
-              setError(await res.text());
+            if (res.ok) {
+              dispatch(hideFeedbackState());
+            } else {
+              dispatch(showFeedbackState({
+                type: FeedbackStateType.Error,
+                message: await res.text()
+              }));
               return;
             }
           }}>
@@ -90,13 +105,6 @@ const SignUpModal = () => {
             </label>
             <input type="submit" value={defaultMessage("sign-up.submit")} />
           </form>
-          <div style={{
-            boxSizing: "content-box",
-            height: `${error.length > 0 ? 1 : 0}lh`,
-            overflow: "hidden",
-            paddingTop: `${error.length > 0 ? 1 : 0}rem`,
-            transition: "0.25s"
-          }}>{error}</div>
           <sub>
             <div className="flex gap-1 justify-center items-center">
               <a href="#" onClick={(event) => {

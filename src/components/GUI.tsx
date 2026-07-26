@@ -9,15 +9,12 @@ import { useState } from "react";
 import UserIndicator from "./UserIndicator/UserIndicator";
 import { useAppSelector } from "$/store/hooks";
 import { nullish } from "$/typing";
-import { FeedbackStateType } from "@/lib/feedbackState";
-import { LoaderCircle } from "lucide-react";
-import Box from "./Box";
+import FeedbackStateIndicator from "./FeedbackStateIndicator";
 
 const GUI = () => {
   const [initialAccountSettingsTab, setInitialAccountSettingsTab] = useState(0);
 
   const account = useAppSelector((state) => state.account);
-  const feedbackState = useAppSelector((state) => state.gui.feedbackState);
   const loading = useAppSelector((state) => state.gui.loading.loading);
   const modals = useAppSelector((state) => state.gui.modals);
 
@@ -26,7 +23,10 @@ const GUI = () => {
   );
 
   if (!nullish(account.id)) return (
-    <SignUpModal />
+    <>
+      <SignUpModal />
+      <FeedbackStateIndicator />
+    </>
   );
 
   return (
@@ -42,19 +42,7 @@ const GUI = () => {
         <AccountSettingsModal startingTab={initialAccountSettingsTab} setInitialAccountSettingsTab={setInitialAccountSettingsTab} />
       }
 
-      {feedbackState &&
-        <Box className={"p-1 rounded-2xl absolute bottom-1.5 right-1/2 select-none transition bg-transparent backdrop-blur-sm pointer-events-none" + (feedbackState?.type === FeedbackStateType.Error ? " bg-(--error-background)! outline-(--error-outline)!" : "")} style={{
-          translate: "50%",
-          scale: feedbackState.visible ? "1" : "0.8",
-          opacity: feedbackState.visible ? "1" : "0"
-        }}>
-          {feedbackState.type === FeedbackStateType.Loading ?
-            <LoaderCircle width="" height="" className="loading-spin" />
-          :
-            <span>{feedbackState.message}</span>
-          }
-        </Box>
-      }
+      <FeedbackStateIndicator />
     </>
   );
 };
