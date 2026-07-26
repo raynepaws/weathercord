@@ -28,7 +28,7 @@ const people = {
   },
   tally: {
     id: "1w053d3942035cb9",
-    name: "tally",
+    name: "Tally",
     roles: [ContributorRole.Translator],
     github: {
       username: "tallypaws",
@@ -46,7 +46,7 @@ const people = {
     quote: "I'm ddededodediamante!"
   },
   vuie: {
-    name: "vuie",
+    name: "vuie68",
     roles: [ContributorRole.Translator],
     github: {
       username: "vuie68",
@@ -55,7 +55,7 @@ const people = {
     quote: "hello there, person who is reading this piece of text right now"
   },
   noodles: {
-    name: "noodles",
+    name: "windynoodles",
     roles: [ContributorRole.Translator],
     github: {
       username: "windynoodles",
