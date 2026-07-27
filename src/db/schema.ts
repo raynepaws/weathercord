@@ -66,6 +66,16 @@ export const connectionsTable = sqliteTable("connections", {
   value: text().notNull()
 });
 
+export interface Station {
+  description: string | null,
+  everyonePermissions: string,
+  id: string,
+  inviteLink: string | null,
+  memberCount: number,
+  name: string,
+  owner: string
+};
+
 export const stationsTable = sqliteTable("stations", {
   description: text(),
   everyonePermissions: text().notNull(),
