@@ -3,6 +3,7 @@ import { ModalType } from "$/modals";
 
 const initialState = {
   [ModalType.AccountSettings]: false,
+  [ModalType.CreateModal]: false,
   [ModalType.SignUp]: false
 };
 

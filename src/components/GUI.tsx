@@ -10,6 +10,7 @@ import UserIndicator from "./UserIndicator/UserIndicator";
 import { useAppSelector } from "$/store/hooks";
 import { nullish } from "$/typing";
 import FeedbackStateIndicator from "./FeedbackStateIndicator";
+import CreateStationModal from "./CreateStationModal";
 
 const GUI = () => {
   const [initialAccountSettingsTab, setInitialAccountSettingsTab] = useState(0);
@@ -41,6 +42,11 @@ const GUI = () => {
       {modals[ModalType.AccountSettings] &&
         <AccountSettingsModal startingTab={initialAccountSettingsTab} setInitialAccountSettingsTab={setInitialAccountSettingsTab} />
       }
+
+      {modals[ModalType.CreateModal] &&
+        <CreateStationModal />
+      }
+
 
       <FeedbackStateIndicator />
     </>
