@@ -15,8 +15,9 @@ export interface Account {
   id: string;
   joined: number;
   lang: string;
-  showLang: boolean;
+  memberships: Membership[];
   nameFont: string | null;
+  showLang: boolean;
   password: string;
   pronouns: string | null;
   username: string;
@@ -32,7 +33,7 @@ export interface Connection {
   value: string;
 }
 
-export type PublicAccount = Omit<Required<Account>, "email" | "password" | "lang"> & { lang?: string };
+export type PublicAccount = Omit<Required<Account>, "email" | "memberships" | "password" | "lang"> & { lang?: string };
 export type AuthorizedAccountFromAPI = Required<Omit<Account, "password">>;
 
 export const accountsTable = sqliteTable("accounts", {
@@ -105,6 +106,12 @@ export const channelsTable = sqliteTable("channels", {
   type: int().notNull()
 });
 
+export type Membership = Partial<Omit<PublicAccount, "admin" | "avatar" | "banner" | "connections" | "lang" | "showLang" | "username">> & {
+  id: string,
+  joined: number,
+  station: string
+};
+
 export const membershipsTable = sqliteTable("memberships", {
   accent1: text(),
   accent2: text(),
@@ -113,7 +120,6 @@ export const membershipsTable = sqliteTable("memberships", {
   id: text().notNull(),
   joined: int().notNull(),
   nameFont: text(),
-  showLang: boolean(),
   station: text().notNull(),
   pronouns: text()
 });
