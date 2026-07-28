@@ -34,7 +34,7 @@ const DataTab = () => {
     <table>
       <tbody>
         {Object.keys(account).sort().map((_key) => {
-          if (["avatar", "banner", "connections"].includes(_key)) return;
+          if (["avatar", "banner", "connections", "memberships"].includes(_key)) return;
           const key = _key as keyof AuthorizedAccountFromAPI & keyof typeof accountsTable;
           return (
             <tr key={key}>
