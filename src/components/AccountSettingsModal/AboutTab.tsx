@@ -2,7 +2,7 @@ import { APP_NAME } from "$/constants";
 import Box from "../Box";
 import { contributors, team } from "$/contributors";
 import DefaultMessage from "../DefaultMessage";
-import { FileText, Hammer, Heart, Quote } from "lucide-react";
+import { FileText, Hammer, Heart, Quote, UserCheck } from "lucide-react";
 
 const AboutTab = () => {
   return (
@@ -63,6 +63,8 @@ const AboutTab = () => {
           );
         })}
       </div>
+      <h2><UserCheck /> Attribution</h2>
+      <p>This application uses the MovType font by Man-o-Valor, which is licensed under the MIT License. Read the full text <a className="link" href="https://github.com/raynepaws/weathercord/blob/master/public/fonts/MovType/LICENSE">here</a>.</p>
       <h2><FileText /> License</h2>
       <p>Weathercord uses the GNU Affero General Public License v3.0. Read the full text <a className="link" href="https://github.com/raynepaws/weathercord/blob/master/LICENSE">here</a>.</p>
     </>

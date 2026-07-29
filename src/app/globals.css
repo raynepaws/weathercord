@@ -118,6 +118,11 @@
   src: url("/fonts/Merriweather-VariableFont_opsz,wdth,wght.ttf");
 }
 
+@font-face {
+  font-family: "MovType";
+  src: url("/fonts/MovType/MovType.ttf");
+}
+
 :root {
   --accent: #bd92f7;
   --accent-background: #9863de42;

@@ -129,6 +129,7 @@ const ProfileTab = () => {
               <option value="Alfa Slab One"><DefaultMessage id="settings.tab.profile.name-font.bold" /></option>
               <option value="Leckerli One"><DefaultMessage id="settings.tab.profile.name-font.cursive" /></option>
               <option value="Maple Mono"><DefaultMessage id="settings.tab.profile.name-font.monospace" /></option>
+              <option value="MovType"><DefaultMessage id="settings.tab.profile.name-font.pixel" /></option>
               <option value="Merriweather"><DefaultMessage id="settings.tab.profile.name-font.serif" /></option>
               <option value="Goldman"><DefaultMessage id="settings.tab.profile.name-font.techno" /></option>
             </select>
