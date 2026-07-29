@@ -8,7 +8,8 @@ import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
 import { hideFeedbackState } from "@/lib/store/reducers/feedbackState";
 import { FeedbackStateType } from "@/lib/feedbackState";
 import { stopLoading } from "@/lib/store/reducers/loading";
-import { AuthorizedAccountFromAPI } from "@/db/schema";
+import { AuthorizedAccountFromAPI, Station } from "@/db/schema";
+import { setStations } from "@/lib/store/reducers/stations";
 
 const App = () => {
   const [feedbackStateTimeout, setFeedbackStateTimeout] = useState<NodeJS.Timeout | null>(null);
@@ -24,7 +25,23 @@ const App = () => {
           .then((account: AuthorizedAccountFromAPI) => {
             dispatch(updateAccount(account));
             setl10nData(account.lang)
-              .then(() => dispatch(stopLoading()));
+              .then(() => {
+                const stations: Station[] = [];
+                Promise.all(account.memberships.map(membership => new Promise((resolve, reject) =>
+                  fetch(`/s/${membership.station}`)
+                    .then(res => {
+                      if (!res.ok) reject(res.status);
+                      res.json()
+                        .then(data => {
+                          stations.push(data);
+                          resolve(data);
+                        })
+                    })
+                ))).then(() => {
+                  dispatch(setStations(stations));
+                  dispatch(stopLoading());
+                });
+              });
           });
         else {
           setl10nData("en-us")

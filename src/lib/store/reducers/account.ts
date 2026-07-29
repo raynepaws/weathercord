@@ -9,6 +9,7 @@ const initialState: AuthorizedAccountFromAPI = {
   banner: "u/default/b",
   bio: null,
   connections: [],
+  memberships: [],
   displayName: null,
   email: "",
   id: "",
